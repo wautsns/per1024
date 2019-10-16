@@ -13,6 +13,7 @@
     <modules>
         <module>per1024-universal-data</module>
         <module>per1024-universal-rpc</module>
+        <module>per1024-universal-sentinel-support</module>
     </modules>
 
 </project>

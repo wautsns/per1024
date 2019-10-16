@@ -43,10 +43,11 @@
             <groupId>com.github.wautsns</groupId>
             <artifactId>apix-validator-spring-boot-starter</artifactId>
         </dependency>
-        <!-- sentinel -->
+        <!-- sentinel support and blockException(of sentinel) handler -->
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <groupId>com.github.wautsns.project</groupId>
+            <artifactId>per1024-universal-sentinel-support</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <!-- 端点健康检查
             <dependency>

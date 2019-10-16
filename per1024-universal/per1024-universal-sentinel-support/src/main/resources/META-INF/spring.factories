@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.github.wautsns.project.per1024.universal.sentinelsupport.BlockExceptionHandlerAutoConfiguration

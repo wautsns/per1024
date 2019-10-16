@@ -1,6 +1,5 @@
 package com.github.wautsns.project.per1024.universal.rpc.auth;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.github.wautsns.apix.core.ApiX;
 import com.github.wautsns.project.per1024.universal.data.microserv.auth.dto.AuthorizationForm;
 
@@ -11,7 +10,7 @@ import com.github.wautsns.project.per1024.universal.data.microserv.auth.dto.Auth
  */
 public interface CheckPermissionRPC {
 
-    @SentinelResource("rpc-checkPermissionAndGetScopeCode")
+    //@SentinelResource("rpc-checkPermissionAndGetScopeCode")
     Byte checkPermissionAndGetScopeCode(AuthorizationForm form) throws ApiX;
 
 }

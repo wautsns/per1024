@@ -20,6 +20,8 @@ public class Messages {
 
     }
 
+    public final String SERVICE_UNAVAILABLE = "[SERVICE_UNAVAILABLE]";
+
     public final String REQUEST_IS_ILLEGAL = "[REQUEST_IS_ILLEGAL]";
 
     public final String DOES_NOT_EXIST = "[DOES_NOT_EXIST]";
