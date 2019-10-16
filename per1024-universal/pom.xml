@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.wautsns.project</groupId>
+        <artifactId>per1024</artifactId>
+        <version>0.1.0</version>
+    </parent>
+    <artifactId>per1024-universal</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>per1024-universal-data</module>
+        <module>per1024-universal-rpc</module>
+    </modules>
+
+</project>

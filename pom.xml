@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.7.RELEASE</version>
+    </parent>
+    <groupId>com.github.wautsns.project</groupId>
+    <artifactId>per1024</artifactId>
+    <version>0.1.0</version>
+    <packaging>pom</packaging>
+
+    <developers>
+        <developer>
+            <name>wautsns</name>
+            <email>wautsns@foxmail.com</email>
+            <url>https://www.github.com/wautsns</url>
+        </developer>
+    </developers>
+
+    <properties>
+        <!-- environment -->
+        <java.version>1.8</java.version>
+        <project.encoding>UTF-8</project.encoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.encoding>${project.encoding}</maven.compiler.encoding>
+        <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
+        <!-- docker -->
+        <docker.image.prefix>wautsns</docker.image.prefix>
+    </properties>
+
+    <modules>
+        <module>per1024-universal</module>
+        <module>per1024-microserv</module>
+        <module>per1024-gateway</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- project dependencies -->
+            <dependency>
+                <groupId>com.github.wautsns.project</groupId>
+                <artifactId>per1024-dependencies</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

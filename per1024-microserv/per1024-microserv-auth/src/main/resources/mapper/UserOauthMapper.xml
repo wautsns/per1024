@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.wautsns.project.per1024.auth.business.repository.mapper.UserOauthMapper">
+
+    <resultMap id="BaseResultMap" type="com.github.wautsns.project.per1024.auth.model.po.UserOauthPO">
+        <result column="uid" jdbcType="BIGINT" property="uid" />
+        <result column="platform" jdbcType="CHAR" property="platform" />
+        <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    </resultMap>
+</mapper>

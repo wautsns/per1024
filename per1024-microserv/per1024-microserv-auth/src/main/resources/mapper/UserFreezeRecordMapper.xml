@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.wautsns.project.per1024.auth.business.repository.mapper.UserFreezeRecordMapper">
+
+    <resultMap id="BaseResultMap" type="com.github.wautsns.project.per1024.auth.model.po.UserFreezeRecordPO">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="uid" jdbcType="BIGINT" property="uid" />
+        <result column="reason" jdbcType="VARCHAR" property="reason" />
+        <result column="timestamp_start" jdbcType="BIGINT" property="timestampStart" />
+        <result column="timestamp_end" jdbcType="BIGINT" property="timestampEnd" />
+        <result column="timestamp_created" jdbcType="BIGINT" property="timestampCreated" />
+    </resultMap>
+</mapper>

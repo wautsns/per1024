@@ -1,0 +1,24 @@
+server:
+  port: 8888
+spring:
+  jackson:
+    time-zone: GMT+8
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non-null
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.182.130:8848
+    gateway:      discovery:        locator:          enabled: true
+      routes:      - id: microserv-auth
+        uri: lb://microserv-auth
+        predicates:        - Paths=tokens & commands/auth
+dubbo:
+  registry:
+    address: nacos://192.168.182.130:8848
+    protocol: dubbo
+apix:
+  validator:
+    extra-message-resource-base-names:
+    - per1024/universal/i18n/message/common_messages
+    - per1024/universal/i18n/message/auth_messages
