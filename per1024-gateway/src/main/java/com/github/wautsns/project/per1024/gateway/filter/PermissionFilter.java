@@ -1,10 +1,13 @@
 package com.github.wautsns.project.per1024.gateway.filter;
 
 import java.math.BigInteger;
+import java.util.List;
+import java.util.Locale;
 
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.core.Ordered;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
@@ -41,6 +44,8 @@ public class PermissionFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) throws ApiX {
         ServerHttpRequest request = exchange.getRequest();
+        List<Locale> locales = request.getHeaders().getAcceptLanguageAsLocales();
+        if (!locales.isEmpty()) { LocaleContextHolder.setLocale(locales.get(0)); }
         ResourceOperation operation = ResourceOperation
             .extractFromHttpMethodName(request.getMethod().name());
         String authorization = request.getHeaders().getFirst("Authorization");

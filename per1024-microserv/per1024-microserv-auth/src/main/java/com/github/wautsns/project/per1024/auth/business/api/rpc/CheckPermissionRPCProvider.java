@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.dubbo.config.annotation.Service;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.github.wautsns.apix.core.ApiX;
 import com.github.wautsns.project.per1024.auth.business.repository.redis.AccessTokenRedis;
 import com.github.wautsns.project.per1024.auth.business.service.PermissionService;
@@ -35,7 +34,6 @@ public class CheckPermissionRPCProvider implements CheckPermissionRPC {
     private final RoleService roleService;
 
     @Override
-    @SentinelResource("")
     public Byte checkPermissionAndGetScopeCode(AuthorizationForm form) throws ApiX {
         ResourcePO resource = resourceService
             .listAvailableResorucesByName(form.getResourceName())
