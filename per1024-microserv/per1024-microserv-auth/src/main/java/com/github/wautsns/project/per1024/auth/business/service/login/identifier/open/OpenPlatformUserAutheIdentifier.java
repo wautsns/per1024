@@ -37,19 +37,31 @@ public class OpenPlatformUserAutheIdentifier implements UserAutheIdentifier {
         return SpecificLoginMode.OPEN;
     }
 
+    /**
+     * 根据开放平台名称和授权码获取用户信息
+     *
+     * @param openPlatform 开放平台名称
+     * @param code oauth2.0 授权码
+     * @return 用户认证信息
+     */
     @Override
     public UserAuthePO identify(String openPlatform, String code) {
+        // 使用 OkAuthManager 获取指定开放平台名称的客户端
+        AbstractOkAuthClient<?, ?> client = okAuthManager.get(openPlatform);
+        if (client == null) {
+            // 无对应客户端, 则说明该给定的开放平台不支持
+            throw new ApiX("400", MessagesOfAuth.UNSUPPORTED_OPEN_PLATFORM)
+                .with(MessagesOfAuth.Variables.OPEN_PLATFORM, openPlatform);
+        }
         try {
-            AbstractOkAuthClient<?, ?> client = okAuthManager.get(openPlatform);
-            if (client == null) {
-                throw new ApiX("400", MessagesOfAuth.UNSUPPORTED_OPEN_PLATFORM)
-                    .with(MessagesOfAuth.Variables.OPEN_PLATFORM, openPlatform);
-            }
+            // 使用 code 获取用户信息(exchangeForUser 实际包含两步,1. 获取access_token 2.获取用户信息)
+            // exchangeForUser 不会返回 null, 若 code 有错误会抛出 OkAuthException
             OkAuthUser user = client.exchangeForUser(code);
             UserOauthPO userOauthPO = userOauthMapper.selectOne(new UserOauthPO()
                 .setOpenId(user.getOpenId())
                 .setPlatform(openPlatform));
             if (userOauthPO == null) {
+                // 为 null 则说明该第三方平台账号未绑定到该系统内
                 throw new ApiX("400", MessagesOfAuth.OPEN_ID_UNBOUND_USER)
                     .with(MessagesOfAuth.Variables.OPEN_PLATFORM, openPlatform)
                     .with(MessagesOfAuth.Variables.OPEN_USER_INFO, user);
